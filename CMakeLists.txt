@@ -23,7 +23,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
 # 搜索文件二---file(GLOB (非递归)/GLOB_RECURSE (递归) 变量名 要搜索的文件路径和文件类型)
 # file(GLOB MAIN_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 # file(GLOB MAIN_HEAD ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
-file(GLOB SRC_LIST ${PROJECT_SOURCE_DIR}/*.cpp)
+file(GLOB SRC_LIST ${PROJECT_SOURCE_DIR}/*.c)
 
 # 关于要搜索的文件路径和类型可加双引号，也可不加---file(GLOB MAIN_HEAD "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 
