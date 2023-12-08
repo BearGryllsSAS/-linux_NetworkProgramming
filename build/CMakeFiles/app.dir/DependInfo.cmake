@@ -1,16 +1,15 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
+  "C"
   )
 # The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/daliyCode_Linux/add.cpp" "/home/daliyCode_Linux/build/CMakeFiles/app.dir/add.cpp.o"
-  "/home/daliyCode_Linux/main.cpp" "/home/daliyCode_Linux/build/CMakeFiles/app.dir/main.cpp.o"
+set(CMAKE_DEPENDS_CHECK_C
+  "/home/networkProgramming/client.c" "/home/networkProgramming/build/CMakeFiles/app.dir/client.c.o"
   )
-set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
+set(CMAKE_C_TARGET_INCLUDE_PATH
   )
 
 # Targets to which this target links.

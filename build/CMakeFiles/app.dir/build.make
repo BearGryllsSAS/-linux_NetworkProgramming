@@ -43,10 +43,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daliyCode_Linux
+CMAKE_SOURCE_DIR = /home/networkProgramming
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daliyCode_Linux/build
+CMAKE_BINARY_DIR = /home/networkProgramming/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/app.dir/depend.make
@@ -57,67 +57,41 @@ include CMakeFiles/app.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/app.dir/flags.make
 
-CMakeFiles/app.dir/add.cpp.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/add.cpp.o: ../add.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daliyCode_Linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/app.dir/add.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/add.cpp.o -c /home/daliyCode_Linux/add.cpp
+CMakeFiles/app.dir/client.c.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/client.c.o: ../client.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/networkProgramming/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/app.dir/client.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/app.dir/client.c.o   -c /home/networkProgramming/client.c
 
-CMakeFiles/app.dir/add.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.dir/add.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daliyCode_Linux/add.cpp > CMakeFiles/app.dir/add.cpp.i
+CMakeFiles/app.dir/client.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/app.dir/client.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/networkProgramming/client.c > CMakeFiles/app.dir/client.c.i
 
-CMakeFiles/app.dir/add.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.dir/add.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daliyCode_Linux/add.cpp -o CMakeFiles/app.dir/add.cpp.s
+CMakeFiles/app.dir/client.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/app.dir/client.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/networkProgramming/client.c -o CMakeFiles/app.dir/client.c.s
 
-CMakeFiles/app.dir/add.cpp.o.requires:
+CMakeFiles/app.dir/client.c.o.requires:
 
-.PHONY : CMakeFiles/app.dir/add.cpp.o.requires
+.PHONY : CMakeFiles/app.dir/client.c.o.requires
 
-CMakeFiles/app.dir/add.cpp.o.provides: CMakeFiles/app.dir/add.cpp.o.requires
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/add.cpp.o.provides.build
-.PHONY : CMakeFiles/app.dir/add.cpp.o.provides
+CMakeFiles/app.dir/client.c.o.provides: CMakeFiles/app.dir/client.c.o.requires
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/client.c.o.provides.build
+.PHONY : CMakeFiles/app.dir/client.c.o.provides
 
-CMakeFiles/app.dir/add.cpp.o.provides.build: CMakeFiles/app.dir/add.cpp.o
-
-
-CMakeFiles/app.dir/main.cpp.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/daliyCode_Linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/app.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/main.cpp.o -c /home/daliyCode_Linux/main.cpp
-
-CMakeFiles/app.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/daliyCode_Linux/main.cpp > CMakeFiles/app.dir/main.cpp.i
-
-CMakeFiles/app.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/daliyCode_Linux/main.cpp -o CMakeFiles/app.dir/main.cpp.s
-
-CMakeFiles/app.dir/main.cpp.o.requires:
-
-.PHONY : CMakeFiles/app.dir/main.cpp.o.requires
-
-CMakeFiles/app.dir/main.cpp.o.provides: CMakeFiles/app.dir/main.cpp.o.requires
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/main.cpp.o.provides.build
-.PHONY : CMakeFiles/app.dir/main.cpp.o.provides
-
-CMakeFiles/app.dir/main.cpp.o.provides.build: CMakeFiles/app.dir/main.cpp.o
+CMakeFiles/app.dir/client.c.o.provides.build: CMakeFiles/app.dir/client.c.o
 
 
 # Object files for target app
 app_OBJECTS = \
-"CMakeFiles/app.dir/add.cpp.o" \
-"CMakeFiles/app.dir/main.cpp.o"
+"CMakeFiles/app.dir/client.c.o"
 
 # External object files for target app
 app_EXTERNAL_OBJECTS =
 
-../app: CMakeFiles/app.dir/add.cpp.o
-../app: CMakeFiles/app.dir/main.cpp.o
+../app: CMakeFiles/app.dir/client.c.o
 ../app: CMakeFiles/app.dir/build.make
 ../app: CMakeFiles/app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/daliyCode_Linux/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/networkProgramming/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -125,8 +99,7 @@ CMakeFiles/app.dir/build: ../app
 
 .PHONY : CMakeFiles/app.dir/build
 
-CMakeFiles/app.dir/requires: CMakeFiles/app.dir/add.cpp.o.requires
-CMakeFiles/app.dir/requires: CMakeFiles/app.dir/main.cpp.o.requires
+CMakeFiles/app.dir/requires: CMakeFiles/app.dir/client.c.o.requires
 
 .PHONY : CMakeFiles/app.dir/requires
 
@@ -135,6 +108,6 @@ CMakeFiles/app.dir/clean:
 .PHONY : CMakeFiles/app.dir/clean
 
 CMakeFiles/app.dir/depend:
-	cd /home/daliyCode_Linux/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/daliyCode_Linux /home/daliyCode_Linux /home/daliyCode_Linux/build /home/daliyCode_Linux/build /home/daliyCode_Linux/build/CMakeFiles/app.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/networkProgramming/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/networkProgramming /home/networkProgramming /home/networkProgramming/build /home/networkProgramming/build /home/networkProgramming/build/CMakeFiles/app.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/app.dir/depend
 

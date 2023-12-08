@@ -48,10 +48,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/daliyCode_Linux
+CMAKE_SOURCE_DIR = /home/networkProgramming
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/daliyCode_Linux/build
+CMAKE_BINARY_DIR = /home/networkProgramming/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daliyCode_Linux/build/CMakeFiles /home/daliyCode_Linux/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/networkProgramming/build/CMakeFiles /home/networkProgramming/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/daliyCode_Linux/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/networkProgramming/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,59 +123,32 @@ app/fast:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/build
 .PHONY : app/fast
 
-add.o: add.cpp.o
+client.o: client.c.o
 
-.PHONY : add.o
-
-# target to build an object file
-add.cpp.o:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/add.cpp.o
-.PHONY : add.cpp.o
-
-add.i: add.cpp.i
-
-.PHONY : add.i
-
-# target to preprocess a source file
-add.cpp.i:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/add.cpp.i
-.PHONY : add.cpp.i
-
-add.s: add.cpp.s
-
-.PHONY : add.s
-
-# target to generate assembly for a file
-add.cpp.s:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/add.cpp.s
-.PHONY : add.cpp.s
-
-main.o: main.cpp.o
-
-.PHONY : main.o
+.PHONY : client.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/main.cpp.o
-.PHONY : main.cpp.o
+client.c.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/client.c.o
+.PHONY : client.c.o
 
-main.i: main.cpp.i
+client.i: client.c.i
 
-.PHONY : main.i
+.PHONY : client.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/main.cpp.i
-.PHONY : main.cpp.i
+client.c.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/client.c.i
+.PHONY : client.c.i
 
-main.s: main.cpp.s
+client.s: client.c.s
 
-.PHONY : main.s
+.PHONY : client.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/main.cpp.s
-.PHONY : main.cpp.s
+client.c.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/client.c.s
+.PHONY : client.c.s
 
 # Help Target
 help:
@@ -186,12 +159,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... app"
-	@echo "... add.o"
-	@echo "... add.i"
-	@echo "... add.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... client.o"
+	@echo "... client.i"
+	@echo "... client.s"
 .PHONY : help
 
 
