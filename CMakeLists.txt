@@ -20,14 +20,23 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR})
 # 搜索 src 目录下的源文件---aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/src SRC_LIST)
 # aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} SRC_LIST)
 
+# 包含头文件
+include_directories(${PROJECT_SOURCE_DIR}/inc)
+
 # 搜索文件二---file(GLOB (非递归)/GLOB_RECURSE (递归) 变量名 要搜索的文件路径和文件类型)
 # file(GLOB MAIN_SRC ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 # file(GLOB MAIN_HEAD ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
-file(GLOB SRC_LIST ${PROJECT_SOURCE_DIR}/*.c)
+file(GLOB SRC_LIST ${PROJECT_SOURCE_DIR}/src/*.c)
 
 # 关于要搜索的文件路径和类型可加双引号，也可不加---file(GLOB MAIN_HEAD "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 
 # 将所有用到的源文件赋值给SRC_LIST---set(SRC_LIST main.cpp add.cpp)
 
+# 指定要链接的动态库的路径
+link_directories(${PROJECT_SOURCE_DIR}/lib)
+
 # 生成可执行程序---引用变量SRC_LIST
 add_executable(app ${SRC_LIST})
+
+# 连接动态库
+target_link_libraries(app wrap)
