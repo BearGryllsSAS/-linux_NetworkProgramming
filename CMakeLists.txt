@@ -29,17 +29,29 @@ include_directories(${PROJECT_SOURCE_DIR}/inc)
 file(GLOB SRC_LIST ${PROJECT_SOURCE_DIR}/src/*.c)
 
 # 根据源文件指定生成的可执行程序的名字---字符串拼接
-string(REPLACE .c .out app SRC_LIST);   
+# string(REPLACE .c .out app ${SRC_LIST}) --- 错误
+
+# 指定要链接的动态库的路径
+link_directories(${PROJECT_SOURCE_DIR}/lib)
+
+# 遍历源文件列表，为每个文件生成一个对应的可执行程序
+foreach(source_file ${SRC_LIST})
+    # 获取源文件的基本文件名（不包括路径和扩展名）
+    get_filename_component(app ${source_file} NAME_WE)
+    # 添加可执行程序并关联源文件
+    add_executable(${app}.out ${source_file})
+    # 连接动态库
+    target_link_libraries(${app}.out wrap pthread)
+endforeach()
+
+# get_filename_component(app ${SRC_LIST} NAME_WE)
 
 # 关于要搜索的文件路径和类型可加双引号，也可不加---file(GLOB MAIN_HEAD "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 
 # 将所有用到的源文件赋值给SRC_LIST---set(SRC_LIST main.cpp add.cpp)
 
-# 指定要链接的动态库的路径
-link_directories(${PROJECT_SOURCE_DIR}/lib)
-
 # 生成可执行程序---引用变量SRC_LIST
-add_executable(app ${SRC_LIST})
+# add_executable(${app}.out ${SRC_LIST})
 
 # 连接动态库
-target_link_libraries(app wrap)
+# target_link_libraries(${app}.out wrap pthread)
