@@ -28,6 +28,9 @@ include_directories(${PROJECT_SOURCE_DIR}/inc)
 # file(GLOB MAIN_HEAD ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h)
 file(GLOB SRC_LIST ${PROJECT_SOURCE_DIR}/src/*.c)
 
+# 根据源文件指定生成的可执行程序的名字---字符串拼接
+string(REPLACE .c .out app SRC_LIST);   
+
 # 关于要搜索的文件路径和类型可加双引号，也可不加---file(GLOB MAIN_HEAD "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
 
 # 将所有用到的源文件赋值给SRC_LIST---set(SRC_LIST main.cpp add.cpp)
