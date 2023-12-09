@@ -111,44 +111,84 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named app
+# Target rules for targets named server_MultiPthreaded.out
 
 # Build rule for target.
-app: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 app
-.PHONY : app
+server_MultiPthreaded.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 server_MultiPthreaded.out
+.PHONY : server_MultiPthreaded.out
 
 # fast build rule for target.
-app/fast:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/build
-.PHONY : app/fast
+server_MultiPthreaded.out/fast:
+	$(MAKE) -f CMakeFiles/server_MultiPthreaded.out.dir/build.make CMakeFiles/server_MultiPthreaded.out.dir/build
+.PHONY : server_MultiPthreaded.out/fast
 
-client.o: client.c.o
+#=============================================================================
+# Target rules for targets named client.out
 
-.PHONY : client.o
+# Build rule for target.
+client.out: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client.out
+.PHONY : client.out
+
+# fast build rule for target.
+client.out/fast:
+	$(MAKE) -f CMakeFiles/client.out.dir/build.make CMakeFiles/client.out.dir/build
+.PHONY : client.out/fast
+
+src/client.o: src/client.c.o
+
+.PHONY : src/client.o
 
 # target to build an object file
-client.c.o:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/client.c.o
-.PHONY : client.c.o
+src/client.c.o:
+	$(MAKE) -f CMakeFiles/client.out.dir/build.make CMakeFiles/client.out.dir/src/client.c.o
+.PHONY : src/client.c.o
 
-client.i: client.c.i
+src/client.i: src/client.c.i
 
-.PHONY : client.i
+.PHONY : src/client.i
 
 # target to preprocess a source file
-client.c.i:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/client.c.i
-.PHONY : client.c.i
+src/client.c.i:
+	$(MAKE) -f CMakeFiles/client.out.dir/build.make CMakeFiles/client.out.dir/src/client.c.i
+.PHONY : src/client.c.i
 
-client.s: client.c.s
+src/client.s: src/client.c.s
 
-.PHONY : client.s
+.PHONY : src/client.s
 
 # target to generate assembly for a file
-client.c.s:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/client.c.s
-.PHONY : client.c.s
+src/client.c.s:
+	$(MAKE) -f CMakeFiles/client.out.dir/build.make CMakeFiles/client.out.dir/src/client.c.s
+.PHONY : src/client.c.s
+
+src/server_MultiPthreaded.o: src/server_MultiPthreaded.c.o
+
+.PHONY : src/server_MultiPthreaded.o
+
+# target to build an object file
+src/server_MultiPthreaded.c.o:
+	$(MAKE) -f CMakeFiles/server_MultiPthreaded.out.dir/build.make CMakeFiles/server_MultiPthreaded.out.dir/src/server_MultiPthreaded.c.o
+.PHONY : src/server_MultiPthreaded.c.o
+
+src/server_MultiPthreaded.i: src/server_MultiPthreaded.c.i
+
+.PHONY : src/server_MultiPthreaded.i
+
+# target to preprocess a source file
+src/server_MultiPthreaded.c.i:
+	$(MAKE) -f CMakeFiles/server_MultiPthreaded.out.dir/build.make CMakeFiles/server_MultiPthreaded.out.dir/src/server_MultiPthreaded.c.i
+.PHONY : src/server_MultiPthreaded.c.i
+
+src/server_MultiPthreaded.s: src/server_MultiPthreaded.c.s
+
+.PHONY : src/server_MultiPthreaded.s
+
+# target to generate assembly for a file
+src/server_MultiPthreaded.c.s:
+	$(MAKE) -f CMakeFiles/server_MultiPthreaded.out.dir/build.make CMakeFiles/server_MultiPthreaded.out.dir/src/server_MultiPthreaded.c.s
+.PHONY : src/server_MultiPthreaded.c.s
 
 # Help Target
 help:
@@ -158,10 +198,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... app"
-	@echo "... client.o"
-	@echo "... client.i"
-	@echo "... client.s"
+	@echo "... server_MultiPthreaded.out"
+	@echo "... client.out"
+	@echo "... src/client.o"
+	@echo "... src/client.i"
+	@echo "... src/client.s"
+	@echo "... src/server_MultiPthreaded.o"
+	@echo "... src/server_MultiPthreaded.i"
+	@echo "... src/server_MultiPthreaded.s"
 .PHONY : help
 
 

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/app.dir/client.c.o"
+  "CMakeFiles/app.dir/src/server_MultiPthreaded.c.o"
   "../app.pdb"
   "../app"
 )

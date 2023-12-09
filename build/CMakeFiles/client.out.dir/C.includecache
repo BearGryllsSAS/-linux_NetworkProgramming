@@ -38,7 +38,7 @@ arpa/inet.h
 sys/socket.h
 -
 
-/home/networkProgramming/src/server_MultiPthreaded.c
+/home/networkProgramming/src/client.c
 wrap.h
 /home/networkProgramming/src/wrap.h
 

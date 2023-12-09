@@ -1,1 +1,1 @@
-/usr/bin/cc     CMakeFiles/app.dir/client.c.o  -o ../app -rdynamic 
+/usr/bin/cc     CMakeFiles/app.dir/src/server_MultiPthreaded.c.o  -o ../app  -L/home/networkProgramming/lib -rdynamic -lwrap -lpthread -Wl,-rpath,/home/networkProgramming/lib 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/networkProgramming/src/server_MultiPthreaded.c" "/home/networkProgramming/build/CMakeFiles/app.dir/src/server_MultiPthreaded.c.o"
+  "/home/networkProgramming/src/server_MultiPthreaded.c" "/home/networkProgramming/build/CMakeFiles/SRC_LIST.dir/src/server_MultiPthreaded.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

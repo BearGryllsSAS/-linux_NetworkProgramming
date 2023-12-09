@@ -57,38 +57,38 @@ include CMakeFiles/app.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/app.dir/flags.make
 
-CMakeFiles/app.dir/client.c.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/client.c.o: ../client.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/networkProgramming/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/app.dir/client.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/app.dir/client.c.o   -c /home/networkProgramming/client.c
+CMakeFiles/app.dir/src/server_MultiPthreaded.c.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/src/server_MultiPthreaded.c.o: ../src/server_MultiPthreaded.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/networkProgramming/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/app.dir/src/server_MultiPthreaded.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/app.dir/src/server_MultiPthreaded.c.o   -c /home/networkProgramming/src/server_MultiPthreaded.c
 
-CMakeFiles/app.dir/client.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/app.dir/client.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/networkProgramming/client.c > CMakeFiles/app.dir/client.c.i
+CMakeFiles/app.dir/src/server_MultiPthreaded.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/app.dir/src/server_MultiPthreaded.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/networkProgramming/src/server_MultiPthreaded.c > CMakeFiles/app.dir/src/server_MultiPthreaded.c.i
 
-CMakeFiles/app.dir/client.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/app.dir/client.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/networkProgramming/client.c -o CMakeFiles/app.dir/client.c.s
+CMakeFiles/app.dir/src/server_MultiPthreaded.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/app.dir/src/server_MultiPthreaded.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/networkProgramming/src/server_MultiPthreaded.c -o CMakeFiles/app.dir/src/server_MultiPthreaded.c.s
 
-CMakeFiles/app.dir/client.c.o.requires:
+CMakeFiles/app.dir/src/server_MultiPthreaded.c.o.requires:
 
-.PHONY : CMakeFiles/app.dir/client.c.o.requires
+.PHONY : CMakeFiles/app.dir/src/server_MultiPthreaded.c.o.requires
 
-CMakeFiles/app.dir/client.c.o.provides: CMakeFiles/app.dir/client.c.o.requires
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/client.c.o.provides.build
-.PHONY : CMakeFiles/app.dir/client.c.o.provides
+CMakeFiles/app.dir/src/server_MultiPthreaded.c.o.provides: CMakeFiles/app.dir/src/server_MultiPthreaded.c.o.requires
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/src/server_MultiPthreaded.c.o.provides.build
+.PHONY : CMakeFiles/app.dir/src/server_MultiPthreaded.c.o.provides
 
-CMakeFiles/app.dir/client.c.o.provides.build: CMakeFiles/app.dir/client.c.o
+CMakeFiles/app.dir/src/server_MultiPthreaded.c.o.provides.build: CMakeFiles/app.dir/src/server_MultiPthreaded.c.o
 
 
 # Object files for target app
 app_OBJECTS = \
-"CMakeFiles/app.dir/client.c.o"
+"CMakeFiles/app.dir/src/server_MultiPthreaded.c.o"
 
 # External object files for target app
 app_EXTERNAL_OBJECTS =
 
-../app: CMakeFiles/app.dir/client.c.o
+../app: CMakeFiles/app.dir/src/server_MultiPthreaded.c.o
 ../app: CMakeFiles/app.dir/build.make
 ../app: CMakeFiles/app.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/networkProgramming/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../app"
@@ -99,7 +99,7 @@ CMakeFiles/app.dir/build: ../app
 
 .PHONY : CMakeFiles/app.dir/build
 
-CMakeFiles/app.dir/requires: CMakeFiles/app.dir/client.c.o.requires
+CMakeFiles/app.dir/requires: CMakeFiles/app.dir/src/server_MultiPthreaded.c.o.requires
 
 .PHONY : CMakeFiles/app.dir/requires
 
