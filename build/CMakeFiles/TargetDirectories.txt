@@ -1,4 +1,0 @@
-/home/networkProgramming/build/CMakeFiles/edit_cache.dir
-/home/networkProgramming/build/CMakeFiles/rebuild_cache.dir
-/home/networkProgramming/build/CMakeFiles/server_MultiPthreaded.out.dir
-/home/networkProgramming/build/CMakeFiles/client.out.dir

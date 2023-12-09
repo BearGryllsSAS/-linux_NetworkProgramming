@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/SRC_LIST.dir/src/server_MultiPthreaded.c.o  -o ../SRC_LIST  -L/home/networkProgramming/lib -rdynamic -lwrap -lpthread -Wl,-rpath,/home/networkProgramming/lib 

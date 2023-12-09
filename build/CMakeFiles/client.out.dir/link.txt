@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/client.out.dir/src/client.c.o  -o ../client.out  -L/home/networkProgramming/lib -rdynamic -lwrap -lpthread -Wl,-rpath,/home/networkProgramming/lib 
