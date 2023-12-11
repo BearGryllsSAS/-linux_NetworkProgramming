@@ -17,6 +17,9 @@
 #include <ctype.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
+#include <poll.h>
+#include <sys/epoll.h>
+#include <time.h>
 
 void perr_exit(const char* s);
 int Accept(int fd, struct sockaddr* sa, socklen_t* salenptr);
