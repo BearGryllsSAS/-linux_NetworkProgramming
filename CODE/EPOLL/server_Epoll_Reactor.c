@@ -35,8 +35,11 @@ void eventset(struct myevent_s* ev, int fd, void (*call_back)(int, int, void*), 
 
     ev->last_active = time(NULL);
 
-    bzero(&ev->buf, sizeof(ev->buf));
-    ev->len = 0;
+    // memset(ev->buf, 0, sizeof(ev->buf));
+    // ev->len = 0;
+
+    // bzero(&ev->buf, sizeof(ev->buf));
+    // ev->len = 0;
 
     return;
 }
@@ -55,12 +58,14 @@ void eventdel(int efd, struct myevent_s* ev) {
     return;
 }
 
-void eventadd(int fd, int events, struct myevent_s* ev) {
+// eventadd(lfd, EPOLLIN, &g_events[MAX_EVENTS]);
+void eventadd(int efd, int events, struct myevent_s* ev) {
     int op = -1;
 
     struct epoll_event epv = { 0, {0} };
-    epv.data.fd = fd;
-    epv.events = ev->events = EPOLLIN;
+
+    epv.data.ptr = ev;
+    epv.events = ev->events = events;
 
     if (ev->status == 0) {
         op = EPOLL_CTL_ADD;
@@ -68,7 +73,8 @@ void eventadd(int fd, int events, struct myevent_s* ev) {
         ev->status = 1;
     }
 
-    int ret = epoll_ctl(g_efd, op, ev->fd, &epv);
+    int ret = epoll_ctl(efd, op, ev->fd, &epv);
+
     if (ret == -1) {
         printf("event add failed [fd=%d], events[%d]\n", ev->fd, events);
     }
@@ -163,7 +169,7 @@ void initlistensocket(int g_efd, int port) {
     bzero(&serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(port);
-    serv_addr.sin_addr.s_addr = htons(INADDR_ANY);
+    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     socklen_t serv_addr_len = sizeof(serv_addr);
 
     int lfd = Socket(AF_INET, SOCK_STREAM, 0);
@@ -176,13 +182,13 @@ void initlistensocket(int g_efd, int port) {
     Listen(lfd, 128);
 
     eventset(&g_events[MAX_EVENTS], lfd, acceptconn, &g_events[MAX_EVENTS]);
-    eventadd(lfd, EPOLLIN, &g_events[MAX_EVENTS]);
+    eventadd(g_efd, EPOLLIN, &g_events[MAX_EVENTS]);
 
     return;
 }
 
 int main(int argc, char* argv[]) {
-    unsigned int port = SERV_PORT;
+    int port = SERV_PORT;
 
     if (argc == 2) port = atoi(argv[1]);
 
@@ -191,14 +197,15 @@ int main(int argc, char* argv[]) {
 
     initlistensocket(g_efd, port);
 
-    struct epoll_event events[MAX_EVENTS + 1];
+    struct epoll_event events1[MAX_EVENTS + 1];
 
     printf("server running : port[%d]\n", port);
 
     int checkPort = 0, i = 0;
 
     while (1) {
-
+        
+        /*
         long long now = time(NULL);
         for (i = 0; i < 100; i++, checkPort++) {
             if (checkPort == MAX_EVENTS) checkPort = 0;
@@ -215,20 +222,23 @@ int main(int argc, char* argv[]) {
             }
 
         }
+        */
 
+        
+        printf("g_efd = %d, &events1 = %d, MAX_EVENTS = %d\n");
 
-        int nready = epoll_wait(g_efd, events, MAX_EVENTS + 1, -1);
+        int nready = epoll_wait(g_efd, events1, MAX_EVENTS + 1, 1000);
         if (nready == -1) perr_exit("epoll_wait error");
 
         for (i = 0; i < nready; i++) {
-            struct myevent_s* ev = (struct myevent_s*)events[i].data.ptr;
+            struct myevent_s* ev = (struct myevent_s*)events1[i].data.ptr;
 
-            if ((events[i].events & EPOLLIN) && (ev->events & EPOLLIN)) {
-                ev->call_back(ev->fd, events[i].events, ev->arg);
+            if ((events1[i].events & EPOLLIN) && (ev->events & EPOLLIN)) {
+                ev->call_back(ev->fd, events1[i].events, ev->arg);
             }
 
-            if ((events[i].events & EPOLLOUT) && (ev->events & EPOLLOUT)) {
-                ev->call_back(ev->fd, events[i].events, ev->arg);
+            if ((events1[i].events & EPOLLOUT) && (ev->events & EPOLLOUT)) {
+                ev->call_back(ev->fd, events1[i].events, ev->arg);
             }
         }
 
