@@ -62,7 +62,7 @@ int main(int argc, char* argv[]) {
 
                     Close(i);
 
-                    FD_CLR(i, &rset);
+                    FD_CLR(i, &allset);
                 }
                 else {
                     Write(STDOUT_FILENO, buf, n);

@@ -1,6 +1,6 @@
 #include "wrap.h"
 
-#define SERV_PORT 7777
+#define SERV_PORT 9999
 
 struct s_Info {         // 定义一个结构体，捆绑地址结构和cfd
     struct sockaddr_in clint_addr;

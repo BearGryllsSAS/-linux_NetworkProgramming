@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
 
                     Close(client[i]);
 
-                    FD_CLR(client[i], &rset);
+                    FD_CLR(client[i], &allset);
 
                     client[i] = -1;
                 }

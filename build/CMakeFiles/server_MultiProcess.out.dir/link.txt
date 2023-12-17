@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/server_MultiProcess.out.dir/src/server_MultiProcess.c.o  -o ../server_MultiProcess.out  -L/home/networkProgramming/lib -rdynamic -lwrap -lpthread -Wl,-rpath,/home/networkProgramming/lib 

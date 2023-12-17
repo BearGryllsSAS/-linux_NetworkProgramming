@@ -12,6 +12,7 @@ int main(int argc, char* argv[]) {
 
     struct sockaddr_in serv_addr, clit_addr;
     socklen_t clit_addr_len = sizeof(clit_addr);
+    bzero(&serv_addr, sizeof(serv_addr));
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(SERV_PORT);
     serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -28,7 +29,7 @@ int main(int argc, char* argv[]) {
 
     struct pollfd client[OPEN_MAX];
     client[0].fd = lfd;
-    client[0].events = POLLIN;
+    client[0].events = POLLRDNORM;
 
     for (i = 1; i < OPEN_MAX; i++) {
         client[i].fd = -1;
@@ -38,8 +39,9 @@ int main(int argc, char* argv[]) {
 
     while (1) {
         nready = poll(client, maxi + 1, -1);
+        if (nready == -1) perr_exit("poll error");
 
-        if (client[0].revents & EPOLLIN) {
+        if (client[0].revents & POLLRDNORM) {
             clit_addr_len = sizeof(clit_addr);
 
             cfd = Accept(lfd, (struct sockaddr*)&clit_addr, &clit_addr_len);
@@ -53,7 +55,7 @@ int main(int argc, char* argv[]) {
             if (i > maxi) maxi = i;
 
             client[i].fd = cfd;
-            client[i].events = POLLIN;
+            client[i].events = POLLRDNORM;
 
             printf("received from %s at PORT %d\n",
                 inet_ntop(AF_INET, &clit_addr.sin_addr.s_addr, clit_IP, sizeof(clit_IP)),
@@ -62,34 +64,36 @@ int main(int argc, char* argv[]) {
             if (--nready == 0) continue;
         }
 
-        for (i = 1; i < maxi; i++) {
+        for (i = 1; i <= maxi; i++) {
             if ((sockfd = client[i].fd) < 0) continue;
 
-            if ((n = Read(sockfd, buf, sizeof(buf))) < 0) {
-                if (errno == ECONNRESET) {
-                    printf("client[%d] aborted connection\n", i);
+            if (client[i].revents & (POLLRDNORM | POLLERR)) {
+                if ((n = Read(sockfd, buf, sizeof(buf))) < 0) {
+                    if (errno == ECONNRESET) {
+                        printf("client[%d] aborted connection\n", i);
+
+                        Close(sockfd);
+                        client[i].fd = -1;
+                    }
+                    else {
+                        perr_exit("read error");
+                    }
+                }
+                else if (n == 0) {
+                    printf("client[%d] is closed\n", i);
 
                     Close(sockfd);
                     client[i].fd = -1;
                 }
                 else {
-                    perr_exit("read error");
+                    Write(STDOUT_FILENO, buf, n);
+
+                    for (j = 0; j < n; j++) {
+                        buf[j] = toupper(buf[j]);
+                    }
+
+                    Write(sockfd, buf, n);
                 }
-            }
-            else if (n == 0) {
-                printf("client[%d] is closed\n", i);
-
-                Close(sockfd);
-                client[i].fd = -1;
-            }
-            else {
-                Write(STDOUT_FILENO, buf, n);
-
-                for (j = 0; j < n; j++) {
-                    buf[j] = toupper(buf[j]);
-                }
-
-                Write(sockfd, buf, n);
             }
         }
     }

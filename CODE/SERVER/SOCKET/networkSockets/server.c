@@ -14,7 +14,7 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 
-#define SERV_PORT 9527
+#define SERV_PORT 9999
 
 void sys_err(const char* str) {
     perror(str);
