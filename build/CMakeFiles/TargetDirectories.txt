@@ -1,5 +1,0 @@
-/home/networkProgramming/build/CMakeFiles/edit_cache.dir
-/home/networkProgramming/build/CMakeFiles/rebuild_cache.dir
-/home/networkProgramming/build/CMakeFiles/server_Epoll_Reactor.out.dir
-/home/networkProgramming/build/CMakeFiles/server_Epoll.out.dir
-/home/networkProgramming/build/CMakeFiles/client.out.dir
