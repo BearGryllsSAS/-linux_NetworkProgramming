@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/server_Select.out.dir/src/server_Select.c.o  -o ../server_Select.out  -L/home/networkProgramming/lib -rdynamic -lwrap -lpthread -Wl,-rpath,/home/networkProgramming/lib 

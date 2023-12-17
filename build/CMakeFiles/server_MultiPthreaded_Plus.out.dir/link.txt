@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/server_MultiPthreaded_Plus.out.dir/src/server_MultiPthreaded_Plus.c.o  -o ../server_MultiPthreaded_Plus.out  -L/home/networkProgramming/lib -rdynamic -lwrap -lpthread -Wl,-rpath,/home/networkProgramming/lib 

@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/server_Poll.out.dir/src/server_Poll.c.o  -o ../server_Poll.out  -L/home/networkProgramming/lib -rdynamic -lwrap -lpthread -Wl,-rpath,/home/networkProgramming/lib 

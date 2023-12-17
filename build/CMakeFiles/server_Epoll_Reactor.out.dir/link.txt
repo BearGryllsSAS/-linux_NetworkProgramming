@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/server_Epoll_Reactor.out.dir/src/server_Epoll_Reactor.c.o  -o ../server_Epoll_Reactor.out  -L/home/networkProgramming/lib -rdynamic -lwrap -lpthread -Wl,-rpath,/home/networkProgramming/lib 
