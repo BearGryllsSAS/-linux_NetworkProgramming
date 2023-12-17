@@ -51,16 +51,16 @@ void* do_Work(int* arg) {
         // 调试
         // printf("hello world---4\n");
 
-        write(STDOUT_FILENO, buf, ret);
+        Write(STDOUT_FILENO, buf, ret);
 
         for (i = 0; i < ret; i++) {
             buf[i] = toupper(buf[i]);
         }
 
-        write(ts->cfd, buf, ret);
+        Write(ts->cfd, buf, ret);
     }
 
-    close(ts->cfd);
+    Close(ts->cfd);
 
     return (void*)0;
 }
@@ -102,9 +102,9 @@ int main(int argc, char* argv[]) {
         ts[i].clint_addr = clit_addr;
         ts[i].cfd = cfd;
 
-        pthread_create(&tid, NULL, do_Work, (void*)&ts[i]);
+        Pthread_create(&tid, NULL, do_Work, (void*)&ts[i]);
 
-        pthread_detach(tid);
+        Pthread_detach(tid);
 
         i++;
     }

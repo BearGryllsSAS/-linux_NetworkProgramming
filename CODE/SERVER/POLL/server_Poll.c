@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     lfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     int opt = 1;
-    setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+    Setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
     Bind(lfd, (struct sockaddr*)&serv_addr, serv_addr_len);
 
@@ -38,8 +38,7 @@ int main(int argc, char* argv[]) {
     int maxi = 0;
 
     while (1) {
-        nready = poll(client, maxi + 1, -1);
-        if (nready == -1) perr_exit("poll error");
+        nready = Poll(client, maxi + 1, -1);
 
         if (client[0].revents & POLLRDNORM) {
             clit_addr_len = sizeof(clit_addr);

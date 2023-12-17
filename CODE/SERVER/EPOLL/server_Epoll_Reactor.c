@@ -54,8 +54,7 @@ void eventdel(int efd, struct myevent_s* ev) {
     // struct epoll_event epv = { {0, { 0 }} };
     // epv.data.ptr = NULL;
 
-    int ret = epoll_ctl(efd, EPOLL_CTL_DEL, ev->fd, NULL);
-    if (ret == -1) perr_exit("epoll_ctl error\n");
+    int ret = Epoll_ctl(efd, EPOLL_CTL_DEL, ev->fd, NULL);
 
     return;
 }
@@ -93,7 +92,6 @@ void acceptconn(int lfd, int events, void* arg) {
     if (i == MAX_EVENTS) perr_exit("client too much\n");
 
     ret = fcntl(cfd, F_SETFL, O_NONBLOCK);                              // 设置cfd为非阻塞
-    if (ret == -1) perr_exit("fcntl error\n");
 
     eventset(&g_events[i], cfd, recvdata, &g_events[i]);                // 初始化cfd对应的g_events[i]成员变量
     eventadd(g_efd, EPOLLIN, &g_events[i]);                   // 将cfd挂上监听红黑树，监听其读事件
@@ -176,7 +174,7 @@ void initlistensocket(int efd, int port) {
 
     // 设置端口复用
     int opt = 1;
-    if (setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof opt) == -1) perr_exit("setsockopt error");
+    Setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof opt);
 
     ret = fcntl(lfd, F_SETFL, O_NONBLOCK);                                              // 将lfd设置为非阻塞
     if (ret == -1) perr_exit("fcntl error\n");
@@ -200,8 +198,7 @@ int main(int argc, char* argv[]) {
 
     if (argc == 2) port = atoi(argv[1]);                  // 使用用户指定的端口，如未指定，则使用默认端口
 
-    g_efd = epoll_create(MAX_EVENTS + 1);                 // 创建监听红黑树树根，返回给全局变量 g_efd        
-    if (g_efd == -1) perr_exit("epoll_create error");
+    g_efd = Epoll_create(MAX_EVENTS + 1);                 // 创建监听红黑树树根，返回给全局变量 g_efd        
 
     initlistensocket(g_efd, port);                        // 创建并初始化监听文件描述符 lfd
 
@@ -235,8 +232,7 @@ int main(int argc, char* argv[]) {
         
 
         // 监听红黑树g_efd, 1秒没有事件满足, 返回 0
-        int nready = epoll_wait(g_efd, events, MAX_EVENTS + 1, 1000);
-        if (nready == -1) perr_exit("epoll_wait error");
+        int nready = Epoll_wait(g_efd, events, MAX_EVENTS + 1, 1000);
 
         for (i = 0; i < nready; i++) {
             // 使用自定义的myevent_s结构体类型指针, 接收联合体data的void * ptr成员

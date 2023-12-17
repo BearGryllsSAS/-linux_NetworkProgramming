@@ -20,25 +20,23 @@ int main() {
     lfd = Socket(AF_INET, SOCK_STREAM, 0);
 
     int opt = 1;
-    setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+    Setsockopt(lfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
     Bind(lfd, (struct sockaddr*)&serv_addr, serv_addr_len);
 
     Listen(lfd, 128);
 
-    int epfd = epoll_create(OPEN_MAX);
+    int epfd = Epoll_create(OPEN_MAX);
 
     struct epoll_event tep, ep[OPEN_MAX];
 
     tep.data.fd = lfd;
     tep.events = EPOLLIN;
 
-    ret = epoll_ctl(epfd, EPOLL_CTL_ADD, lfd, &tep);
-    if (ret == -1) perr_exit("epoll_ctl error\n");
+    ret = Epoll_ctl(epfd, EPOLL_CTL_ADD, lfd, &tep);
 
     while (1) {
-        nready = epoll_wait(epfd, ep, OPEN_MAX, -1);
-        if (nready == -1) perr_exit("epoll_wait error\n");
+        nready = Epoll_wait(epfd, ep, OPEN_MAX, -1);
 
         for (i = 0; i < nready; i++) {
             if (ep[i].data.fd == lfd) {
@@ -49,8 +47,7 @@ int main() {
                 tep.data.fd = cfd;
                 tep.events = EPOLLIN;
 
-                ret = epoll_ctl(epfd, EPOLL_CTL_ADD, cfd, &tep);
-                if (ret == -1) perr_exit("epoll_ctl error\n");
+                ret = Epoll_ctl(epfd, EPOLL_CTL_ADD, cfd, &tep);
                 
                 printf("received from %s at PORT %d\n",
                 inet_ntop(AF_INET, &clit_addr.sin_addr.s_addr, clit_IP, sizeof(clit_IP)),
@@ -64,14 +61,12 @@ int main() {
                 if (n < 0) {
                     perror("Read n < 0\n");
 
-                    ret = epoll_ctl(epfd, EPOLL_CTL_DEL, sockfd, NULL);
-                    if (ret == -1) perr_exit("epoll_ctl error\n");
+                    ret = Epoll_ctl(epfd, EPOLL_CTL_DEL, sockfd, NULL);
 
                     Close(sockfd);
                 }
                 else if (n == 0) {
-                    ret = epoll_ctl(epfd, EPOLL_CTL_DEL, sockfd, NULL);
-                    if (ret == -1) perr_exit("epoll_ctl error\n");
+                    ret = Epoll_ctl(epfd, EPOLL_CTL_DEL, sockfd, NULL);
 
                     Close(sockfd);
 

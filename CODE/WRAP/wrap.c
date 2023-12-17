@@ -179,3 +179,112 @@ ssize_t Readline(int fd, void* vptr, size_t maxlen) {
 	return n;
 }
 
+int Pthread_create(pthread_t* thread, const pthread_attr_t* attr, void* (*start_routine) (void *), void *arg) {
+    int n;
+   
+    if ((n = pthread_create(thread, attr, start_routine, arg)) < 0) {
+        perr_exit("pthread_create error");
+    }
+
+    return n;
+}
+
+int Pthread_detach(pthread_t thread) {
+    int n;
+
+    if ((n = pthread_detach(thread)) < 0) {
+        perr_exit("pthread_detach error");
+    }
+
+    return n;
+}
+
+pid_t Waitpid(pid_t pid, int *status, int options) {
+    pid_t n;
+
+    if ((n = waitpid(pid, status, options)) < 0) {
+        perr_exit("watipid error");
+    }
+
+    return n;
+}
+
+pid_t Fork(void) {
+    pid_t n;
+
+    if ((n = fork()) < 0) {
+        perr_exit("fork error");
+    }
+
+    return n;
+}
+
+int Sigemptyset(sigset_t *set) {
+    int n;
+
+    if ((n = sigemptyset(set)) < 0) {
+        perr_exit("sigemptyset error");
+    }
+
+    return n;
+}
+
+int Sigaction(int signum, const struct sigaction *act, struct sigaction *oldact) {
+    int n;
+
+    if ((n = sigaction(signum, act, oldact)) < 0) {
+        perr_exit("sigaction error");
+    }
+
+    return n;
+}
+
+int Setsockopt(int sockfd, int level, int optname,const void *optval, socklen_t optlen) {
+    int n;
+
+    if ((n = setsockopt(sockfd, level, optname, optval, optlen)) < 0) {
+        perr_exit("setsockopt error");
+    }
+
+    return n;
+}
+
+int Poll(struct pollfd *fds, int nfds, int timeout) {
+    int n;
+
+    if ((n = poll(fds, nfds, timeout)) < 0) {
+        perr_exit("poll error");
+    }
+
+    return n;
+}
+
+int Epoll_create(int size) {
+    int n;
+
+    if ((n = epoll_create(size)) < 0) {
+        perr_exit("epoll_create error");
+    }
+
+    return n;
+}
+
+int Epoll_ctl(int epfd, int op, int fd, struct epoll_event *event) {
+    int n;
+
+    if ((n = epoll_ctl(epfd, op, fd, event)) < 0) {
+        perr_exit("epoll_ctl error");
+    }
+
+    return n;
+}
+
+int Epoll_wait(int epfd, struct epoll_event *events,int maxevents, int timeout) {
+    int n;
+
+    if ((n = epoll_wait(epfd, events,maxevents, timeout)) < 0) {
+        perr_exit("epoll_wait error");
+    }
+
+    return n;
+}
