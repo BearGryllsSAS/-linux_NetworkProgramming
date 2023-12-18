@@ -289,3 +289,13 @@ int Epoll_wait(int epfd, struct epoll_event *events,int maxevents, int timeout) 
 
     return n;
 }
+
+int Select(int nfds, fd_set *readfds, fd_set *writefds,fd_set *exceptfds, struct timeval *timeout) {
+    int n;
+
+    if ((n = select(nfds, readfds, writefds, exceptfds, timeout)) < 0) {
+        perr_exit("select error");
+    }
+
+    return n;
+}
