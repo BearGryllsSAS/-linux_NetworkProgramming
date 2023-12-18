@@ -80,14 +80,14 @@ int main(int argc, char* argv[]) {
                     FD_CLR(i, &allset);
                 
                     // 待完善
-                    for (j = 0; j < MAX_SIZE && cfdArr[j] == i; j++);
+                    for (j = 0; j < MAX_SIZE && cfdArr[j] != i; j++);
                     cfdArr[j] = -1;
                 }
                 else {
                     Write(STDOUT_FILENO, buf, n);
                     
                     for (j = 0; j <= maxi; j++) {
-                        if (cfdArr[j] == i) continue;
+                        if (cfdArr[j] == i || cfdArr[j] == -1) continue;
                         
                         memset(client, 0, sizeof(client));
                         sprintf(client, "client[%d]>>> ", i);

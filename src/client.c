@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     struct sockaddr_in serv_addr;
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(9999);
-    inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr.s_addr);
+    inet_pton(AF_INET, "101.200.235.151", &serv_addr.sin_addr.s_addr);
     ret = Connect(cfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
 
     flag = fcntl(STDIN_FILENO, F_GETFL);
